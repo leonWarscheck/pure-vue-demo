@@ -1,13 +1,13 @@
 <template>
     <div class="counter-controls" role="group" aria-label="Counter controls">
       <button 
-        @click={decrementClicked}
+        @click="dispatch(decrementClicked())"
         aria-label="Decrease count"
       >
         -
       </button>
       <button 
-        @click={incrementClicked}
+        @click="dispatch(incrementClicked())"
         aria-label="Increase count"
       >
         +
@@ -17,5 +17,5 @@
   
   <script setup lang="ts">
   import useCounterStore from '../useCounterStore'
-  const { decrementClicked, incrementClicked } = useCounterStore()
+  const { decrementClicked, incrementClicked,dispatch } = useCounterStore()
   </script>

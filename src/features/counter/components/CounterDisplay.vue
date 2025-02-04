@@ -1,11 +1,14 @@
 <template>
   <div class="counter-display" role="status" aria-live="polite">
-    {{ count }}
+    Count: {{ count }}
+    Count Squared: {{ countSquared }}
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import useCounterStore from '../useCounterStore'
-const { state, selectCount } = useCounterStore()
-const count = computed(() => selectCount(state))
+const { state, selectCount, selectCountSquared } = useCounterStore()
+const count = computed(() => selectCount(state.value))
+const countSquared = computed(() => selectCountSquared(state.value))
 </script>
