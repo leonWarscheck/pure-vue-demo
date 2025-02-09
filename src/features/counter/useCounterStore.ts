@@ -1,12 +1,9 @@
-// Redux Style Statemanagement Implementation 
+// ### Redux Style, Pure Statemanagement Implementation in Vue
 // Demonstration Purposes Only 
 
-// The 'Vue Redux' Library with 'Redux Toolkit' has native TS Support and
-// Redux-Saga can be used with it as middleware to isolate sideeffects as much
-// as possible.
-
-// However this demo is better at showing some "under the hood" principles incl.
-// its clean testing capabilities.
+// (For Production, the 'Vue Redux' Library is recommended, because it has native
+// TypeScript Support. Also Redux-Saga can be used with it as middleware to isolate
+// sideeffects even further.)
 
 import { ref, readonly } from "vue";
 
@@ -39,7 +36,8 @@ export function counterReducer(
   }
 }
 
-// The actual store object
+// The actual store object, stored in a single ref. By wrapping compute() around
+// selectors in components, the store is reactive and the selectors are memoized.
 const state = ref<State>(initialState);
 
 // Dispatch function to trigger pure case handlers in the reducer via actions
@@ -50,7 +48,8 @@ export const dispatch = (action: Action) => {
   state.value = counterReducer(state.value, action);
 };
 
-// Action Creators (pure)
+// Action Creators (pure), usually also with payload property, which was not
+// needed here though.
 export const incrementClicked: ActionCreator = () => ({
   type: "incrementClicked",
 });
@@ -59,11 +58,14 @@ export const decrementClicked: ActionCreator = () => ({
 });
 
 // Pure Selectors, making business logic highly deterministic and composable
+// (see: blog/symbol-trainer portfolio project, where I show JavaScripts
+// functional composition capabilities with Ramda-Functions)
 export const selectCount = (state: State) => state.count;
 export const selectCountSquared = (state: State) =>
   selectCount(state) * selectCount(state);
 
 // Ready to use in components
+// (Note: Selectors in components have to be wrapped with compute())
 const useCounterStore = () => {
   return {
     state: readonly(state),
