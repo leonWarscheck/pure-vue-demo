@@ -1,13 +1,10 @@
-// ### Redux Style, Pure Statemanagement Implementation in Vue
+// # Redux Style, Immutable Statemanagement Implementation in Vue
 // Demonstration Purposes Only 
-
-// (For Production, the 'Vue Redux' Library is recommended, because it has native
-// TypeScript Support. Also Redux-Saga can be used with it as middleware to isolate
-// sideeffects even further.)
+// (For Production, the 'Vue Redux' Library is recommended instead, but its core
+// pattern is the same as in this demo.)
 
 import { ref, readonly } from "vue";
 
-// Types
 type State = {
   count: number;
 };
@@ -64,8 +61,9 @@ export const selectCount = (state: State) => state.count;
 export const selectCountSquared = (state: State) =>
   selectCount(state) * selectCount(state);
 
-// Ready to use in components
-// (Note: Selectors in components have to be wrapped with compute())
+// State, selectors, actions and dispatch returned: Ready to be used in
+// components. State can be returned as _readonly_ to enforce immutable
+// behaviour throughout the app. 
 const useCounterStore = () => {
   return {
     state: readonly(state),

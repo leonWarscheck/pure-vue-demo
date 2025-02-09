@@ -1,75 +1,26 @@
-# Nuxt Minimal Starter
+# Pure Vue Demo
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Redux Style, Immutable Statemanagement Implementation in Vue 
 
-## Setup
+*(Demonstration Purposes Only)*
 
-Make sure to install dependencies:
+For production, the 'Vue Redux' library is recommended instead, but its core pattern is the same as in this demo.
 
-```bash
-# npm
-npm install
+## Main Demo Files
 
-# pnpm
-pnpm install
+You can find the main demo files (incl. tests) in:
 
-# yarn
-yarn install
-
-# bun
-bun install
+```
+/src/features/counter/
+├── components/
+│   ├── ...
+│   ├── CounterControls.vue
+│   └── CounterDisplay.vue
+├── ...
+├── useCounterStore.test.ts
+└── useCounterStore.ts // !
 ```
 
-## Development Server
+> explore in instant IDE: https://stackblitz.com/~/github.com/leonWarscheck/pure-vue-demo
 
-Start the development server on `http://localhost:3000`:
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
